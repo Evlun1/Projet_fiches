@@ -1,0 +1,30 @@
+
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+    <script type = "text/javascript"
+         src = "{{ url_for('static', filename = 'js/hello.js') }}" ></script>
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Appli fiche !!</h1>
+
+        {#{% for table in tables %}
+            {{titles[loop.index]}}
+            {{ table|safe }}
+        {% endfor %}#}
+        <a href="/download_output" target="blank">
+            <button class='btn btn-success'>Download!</button></a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{#{% block script %}#}
