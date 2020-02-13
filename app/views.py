@@ -16,7 +16,6 @@ def index():
 def download_output():
     try:
         return send_file('../Output/scenario_detaille_20200206_14_39.csv',
-                         mimetype="application/x-csv",
                          attachment_filename='Sortie.csv')
     except Exception as e:
         return str(e)
