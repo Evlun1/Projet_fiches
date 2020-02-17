@@ -8,15 +8,15 @@ import os
 
 def optimization():
     # Chemin d'accès des fichiers
-    path_excel = '../Input/AS/'
-    path_ae = '../Input/AE/'
+    path_excel = 'Input/AS/'
+    path_ae = 'Input/AE/'
     name_excel_as = '201909_Inputs_MD_v20190902_v2.xlsx'
     input_booster = "Booster.xlsx"
     input_ae = '201909_Inputs_SC_Satisfaction_RF2.xlsx'
     input_vol_ae = "201910_Inputs_SC_Volumes_RF2.xlsx"
-    output = '../Output/'
+    output = 'Output/'
 
-    template = '../Input/AS/excel_template_allocation_flux V3.xlsx'
+    template = 'Input/AS/excel_template_allocation_flux V3.xlsx'
 
     # Liste des différentes contraintes pour la création des scénarios (à modifier)
 
@@ -618,17 +618,23 @@ def optimization():
     if len(scenarios_non_optimal) > 0:
         scenarios_non_optimal = pd.DataFrame(scenarios_non_optimal)
         scenarios_non_optimal = scenarios_non_optimal.drop_duplicates()
-        scenarios_non_optimal.to_csv(output + 'scenarios_non_optim_' + timestr + '.csv', sep=';', decimal=",",
+        scenarios_non_optimal.to_csv((output + 'scenarios_non_optim_' + timestr + '.csv').replace(":", "_"), sep=';', decimal=",",
                                      index=False)
+        name_of_csv_noptim = (output + 'scenarios_non_optim_' + timestr + '.csv').replace(":", "_")
 
     if len(list_scenario) == 1:
         res_detaille.to_csv((output + 'scenario_detaille_' + timestr + '.csv').replace(":", "_"), sep=';', decimal=",",
                             index=False)
+
+        name_of_csv = (output + 'scenario_detaille_' + timestr + '.csv').replace(":", "_")
     else:
         res_detaille_final = pd.DataFrame(res_detaille_final)
-        res_detaille_final.to_csv(output + 'scenarios_' + timestr + '.csv', sep=";", decimal=",", index=False)
+        res_detaille_final.to_csv((output + 'scenarios_' + timestr + '.csv').replace(":", "_"), sep=";", decimal=",", index=False)
+        name_of_csv = (output + 'scenarios_' + timestr + '.csv').replace(":", "_")
 
     print('Exécution terminée!')
+
+    return name_of_csv
 
 
 if __name__=="__main__":

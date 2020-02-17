@@ -13,14 +13,21 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Appli fiche !!</h1>
 
-        {#{% for table in tables %}
-            {{titles[loop.index]}}
-            {{ table|safe }}
-        {% endfor %}#}
-        <a href="/download_output" target="blank">
-            <button class='btn btn-success'>Download!</button></a>
+      <h1 style="margin-bottom: 1em">Appli fiche !!</h1>
+
+        <div class="row">
+            <div class="col" align="center">
+                <form action="/convert" method="POST" >
+                    <button type="submit" class="btn btn-primary"> Convert. </button>
+                </form>
+            </div>
+            <div class="col" align="center">
+                <a href="/download_output" target="blank">
+                    <button class='btn btn-success'>Download!</button></a>
+            </div>
+        </div>
+
     </div>
   </div>
 </div>
